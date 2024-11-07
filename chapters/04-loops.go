@@ -7,45 +7,45 @@ import (
 
 func main() {
 
-	const conferenceTickets int = 50
-	var remainingTickets uint = 50
-	conferenceName := "Go Conference"
-	bookings := []string{}
+	const totalTickets int = 50
+	var availableTickets uint = 50
+	eventTitle := "Go Conference"
+	reservations := []string{}
 
-	fmt.Printf("Welcome to %v booking application.\nWe have total of %v tickets and %v are still available.\nGet your tickets here to attend\n", conferenceName, conferenceTickets, remainingTickets)
+	fmt.Printf("Welcome to %v event registration system.\nWe have total of %v tickets and %v are still available.\nSecure your spot by booking tickets now\n", eventTitle, totalTickets, availableTickets)
 
 	for {
-		var firstName string
-		var lastName string
+		var fname string
+		var lname string
 		var email string
-		var userTickets uint
+		var ticketCount uint
 
 		// asking for user input
-		fmt.Println("Enter Your First Name: ")
-		fmt.Scanln(&firstName)
+		fmt.Println("Provide Your First Name: ")
+		fmt.Scanln(&fname)
 
-		fmt.Println("Enter Your Last Name: ")
-		fmt.Scanln(&lastName)
+		fmt.Println("Provide Your Last Name: ")
+		fmt.Scanln(&lname)
 
-		fmt.Println("Enter Your Email: ")
+		fmt.Println("Provide Your Email Address: ")
 		fmt.Scanln(&email)
 
-		fmt.Println("Enter number of tickets: ")
-		fmt.Scanln(&userTickets)
+		fmt.Println("How many tickets do you need?: ")
+		fmt.Scanln(&ticketCount)
 
 		// book ticket in system
-		remainingTickets = remainingTickets - userTickets
-		bookings = append(bookings, firstName+" "+lastName)
+		availableTickets = availableTickets - ticketCount
+		reservations = append(reservations, fname+" "+lname)
 
-		fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
-		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
+		fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", fname, lname, ticketCount, email)
+		fmt.Printf("%v tickets remaining for %v\n", availableTickets, eventTitle)
 
 		// print only first names
-		firstNames := []string{}
-		for _, booking := range bookings {
+		fnames := []string{}
+		for _, booking := range reservations {
 			var names = strings.Fields(booking)
-			firstNames = append(firstNames, names[0])
+			fnames = append(fnames, names[0])
 		}
-		fmt.Printf("The first names %v\n", firstNames)
+		fmt.Printf("List of attendees' first names: %v\n", fnames)
 	}
 }
